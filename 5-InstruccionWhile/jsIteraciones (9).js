@@ -1,11 +1,16 @@
 function mostrar()
 {
-  var num, max = -9999999, min = 9999999;
+  var num, max, min, primeravez = true;
 
 	do{
     do{
       num = parseInt(prompt("Ingrese un número:"));
     } while(isNaN(num));
+    if(primeravez){
+      primeravez = false;
+      max = num;
+      min = num;
+    }
      if(num > max){
       max = num;
     } else if(num < min){
