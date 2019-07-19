@@ -1,18 +1,11 @@
-function mostrar()
-{
+function mostrar(){
 
-	var contador=0;
-	//declarar contadores y variables 
-	
-	var respuesta="si";
+  var num, sumapos = 0, sumaneg = 0, cantpos = 0, cantneg = 0, cant0 = 0, cantpar, prompos, promneg, dif, cont = 0,
 
-	while(respuesta!="no")
-	{
-		
-	
-	}
+  do{
+    prompt("Ingrese el número: ");
+
+  }
 
 
-
-
-}//FIN DE LA FUNCIÓN
+}

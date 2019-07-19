@@ -7,11 +7,11 @@ function mostrar()
 
   do{
     contador++;
-    var num = parseInt(prompt("Ingrese el " + contador + "º número:"));
     do{
-      acumulador += num;
+      var num = parseInt(prompt("Ingrese el " + contador + "º número:"));
     } while(isNaN(num));
-  } while(num != null);
+    acumulador += num;
+  } while(confirm("Desea continuar?"));
 
 document.getElementById('suma').value=acumulador;
 document.getElementById('promedio').value=acumulador/contador;
