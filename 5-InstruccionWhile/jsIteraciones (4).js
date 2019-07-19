@@ -1,24 +1,14 @@
-function mostrar()
-{ /* var numero = prompt("ingrese un número entre 0 y 10.");
+function mostrar(){
 
-while(numero > 9 || numero < 0){
-  numero = prompt("ingrese un número entre 0 y 10.");
-  while(isNaN(numero)){
-    numero = prompt("ingrese un número entre 0 y 10.");
-  }
-}
+	var num = NaN;
 
-  document.getElementById("Numero").value = numero;
-*/
+	for(;isNaN(num);){
+		num = -1;
+		for(; num < 0 || num > 9;){
+			num = prompt("Ingrese un número entre 0 y 9 inclusive: ");
+		}
+	}
 
-var numero;
+	document.getElementById("Numero").value = num;
 
-do{
-  numero = prompt("ingrese un número entre 0 y 10.");
-  while(isNaN(numero)){
-    numero = prompt("ingrese un número entre 0 y 10.");
-  }
-} while(numero > 9 || numero < 0);
-
-  document.getElementById("Numero").value = numero;
 }
