@@ -1,16 +1,18 @@
 function mostrar()
 {
+  var cantdiv = 0;
+
   do{
-    var num = parseInt(prompt("Ingrese el número:")), j = 0;
+    var num = parseInt(prompt("Ingrese el número:"));
   }while(isNaN(num));
 
-  for( i = 1 ; i < num ; i++){
+  for( i = 1 ; i <= num ; i++){
     if( num % i == 0){
-      document.write(i + ", ");
-      j++
+      document.write("<font size = 6>" + i + ", ");
+      cantdiv++
     }
   }
 
-  document.write("<br> <br> " + j);
+  document.write("<font size = 7> <br> <br> Hubo " + cantdiv + " divisores encontrados.");
 
-} // Le faltan arreglos
+}
