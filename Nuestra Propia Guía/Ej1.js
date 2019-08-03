@@ -10,10 +10,6 @@ function Ej1(){
     ang2 = parseInt(prompt("Ingrese los grados del segundo ángulo:"))
   } while(isNaN(ang2) || ang2 <= 0 || ang2 >= (180 - ang1));
 
-  /*do{
-    a = parseInt(prompt("Ingrese uno de los lados:"))
-  } while(isNaN(a) || a <= 0);*/
-
   ang3 = 180 - ang1 - ang2;
 
   if((ang1 != 90 && ang2 != 90 && ang3 != 90)){
@@ -85,16 +81,61 @@ function Ej2(){
 
  function Ej3(){
 
-  var prod, pre, temp;
-
-  prod = prompt("Ingrese el nombre del producto:");
-
-  do{
-    pre = parseInt(prompt("Ingrese su precio:"));
-  } while(isNaN(pre) || pre < 0);
+  var prod, pre, temp, acuprecio = 0, prodmascaro, maxpre, cont = 0,
+   prodmasbarato, minpre, maxbajo0, mintempsobre0, promprecio,
+    bandera1 = true, bandera2 = true;
 
   do{
-    temp = parseInt(prompt("Ingrese su temperatura de conservación (rango: 10º a -10º):"));
-  } while(isNaN(temp) || temp < -10 || temp > 10);
+    cont++
 
+    prod = prompt("Ingrese el nombre del producto:");
+
+    do{
+      pre = parseInt(prompt("Ingrese su precio:"));
+    } while(isNaN(pre) || pre < 0);
+
+    do{
+      temp = parseInt(prompt("Ingrese su temperatura de conservación (rango: 10º a -10º):"));
+    } while(isNaN(temp) || temp < -10 || temp > 10);
+
+    acuprecio += pre;
+
+    if(cont == 1){
+      maxpre = pre;
+      minpre = pre;
+      prodmascaro = prod;
+      prodmasbarato = prod;
+    } else if (pre > maxpre){
+      prodmascaro = prod;
+      maxpre = pre;
+    } else if(pre < minpre){
+      prodmasbarato = prod;
+      minpre = pre;
+    }
+    if(temp < 0 & (pre > maxbajo0 || cont == 1)){
+      maxbajo0 = pre;
+      bandera1 = false;
+    } else if(temp < mintempsobre0 || cont == 1){
+      mintempsobre0 = temp;
+      bandera2 = false;
+    }
+
+  } while(confirm("¿Quiere ingresar otro producto?"));
+
+  promprecio = acuprecio / cont;
+
+  document.write("<font size = 7> El promedio de precios fue de $" + promprecio.toFixed(2));
+  document.write("<br><br>" + prodmascaro + " es el producto más caro.");
+  document.write("<br><br>" + prodmasbarato + ", el más barato.");
+  if(bandera1){
+    document.write("<br><br> No hay ningún producto que se conserve a temperatura bajo 0º.");
+  } else{
+  document.write("<br><br> El precio del producto más caro de los que se conservan a temperatura bajo 0º es de $" + maxbajo0);
+  }
+  if(bandera2){
+    document.write("<br><br> No hay ningún producto cuya temperatura de conservación sea sobre 0º.");
+  } else{
+  document.write("<br><br> De las temperaturas de productos que se conservan por encima de 0º, " + mintempsobre0 + "º es la mínima.");
+  }
+  
  }
