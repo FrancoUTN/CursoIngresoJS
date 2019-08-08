@@ -88,7 +88,11 @@ function Ej2(){
   do{
     cont++
 
-    prod = prompt("Ingrese el nombre del producto:");
+    do{
+      prod = prompt("Ingrese el nombre del producto:");
+      var auxprod = prod;
+      parseInt(auxprod);
+    } while(isNaN(auxprod) == false);
 
     do{
       pre = parseInt(prompt("Ingrese su precio:"));
@@ -112,10 +116,10 @@ function Ej2(){
       prodmasbarato = prod;
       minpre = pre;
     }
-    if(temp < 0 & (pre > maxbajo0 || cont == 1)){
+    if(temp < 0 & (pre > maxbajo0 || bandera1)){
       maxbajo0 = pre;
       bandera1 = false;
-    } else if(temp < mintempsobre0 || cont == 1){
+    } else if(temp < mintempsobre0 || bandera2){
       mintempsobre0 = temp;
       bandera2 = false;
     }
@@ -137,5 +141,85 @@ function Ej2(){
   } else{
   document.write("<br><br> De las temperaturas de productos que se conservan por encima de 0º, " + mintempsobre0 + "º es la mínima.");
   }
+
+}
+
   
- }
+  function Ej4(){
+
+    var num, cont = 0, cantpares = 0, acupares = 0, ceros = 0, cantdiv3 = 0,
+    acumenora300 = 0, cantmenora300 = 0,
+    mayora500 = 1, 
+    maxprimo, primerprimo = true, haymayora500 = false;
+
+    do{
+      var primo = true, cont2 = 1;
+
+      cont++;
+
+      do{
+        num = parseInt(prompt("Ingrese el " + cont + "º número. Que esté entre -100 y 900"));
+      } while(num <= -100 || num >= 900);
+
+      if(num % 2 == 0 & num != 0){
+        cantpares++;
+        acupares += num;
+      } else if(num === 0){
+        ceros++;
+      }
+
+      if(num % 3 == 0){
+        cantdiv3++;
+      }
+
+      if(num < 300){
+        acumenora300 += num;
+        cantmenora300++;
+      }
+
+      if(num > 500){
+      mayora500 *= num;
+      haymayora500 = true;
+      }
+
+      do{
+        cont2++;
+        if(num % cont2 == 0){
+          primo = false;
+          }
+        } while(cont2 < (num / 2) & primo);
+
+        if(primo){
+          if(num > maxprimo || primerprimo){
+            maxprimo = num;
+            primerprimo = false;
+          }
+        }
+        
+        } while(cont < 10)
+
+    document.write("<font size = 5> <br> 1) La cantidad de números pares es de: " + cantpares);
+    document.write("<br> <br> 2) La cantidad de ceros es de: " + ceros);
+    if(cantpares == 0){
+      document.write("<br> <br> 4) No se han ingresado números pares.");
+    } else{
+    document.write("<br> <br> 3) El promedio de pares es de: " + (acupares / cantpares));
+    }
+    document.write("<br> <br> 4) Hay " + cantdiv3 + " números que son divisibles por 3.");
+    if(cantmenora300 == 0){
+      document.write("<br> <br> 5) No se ha ingresado ningún número menor a 300.");
+    } else{
+    document.write("<br> <br> 5) El promedio de los números menores a 300 es de: " + (acumenora300 / cantmenora300));
+    }
+    if(mayora500 > 500){
+      document.write("<br> <br> 6) La multiplicación acumulada de los números mayores a 500 es de: " + mayora500);
+      } else{
+        document.write("<br> <br> 6) No se han ingresado ni 2 números mayores a 500.");
+    }
+    if(primerprimo == false){
+    document.write("<br> <br> 7) El mayor número primo es: " + maxprimo);
+    } else{
+      document.write("<br> <br> 7) No se ha ingresado ningún número primo.");
+    }
+
+  }
