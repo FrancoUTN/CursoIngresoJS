@@ -184,7 +184,7 @@ function Ej2(){
 
       do{
         cont2++;
-        if(num % cont2 == 0){
+        if(num % cont2 == 0 & num != 2){
           primo = false;
           }
         } while(cont2 < (num / 2) & primo);
