@@ -1,0 +1,6 @@
+Pedir nombre / sexo / nota
+
+Informar:
+
+1) El nombre y el sexo de la mayor y de la menor nota.
+2) Promedio de notas totales y de notas de mujeres.
